@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int-xml="http://www.springframework.org/schema/integration/xml"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/integration/xml http://www.springframework.org/schema/integration/xml/spring-integration-xml.xsd
+    ">
+
+
+    <int-xml:xpath-expression expression="/order/item"/>
+
+    <int-xml:xpath-splitter id="orderSplitter"
+                            input-channel="orderChannel" output-channel="orderItemChannel">
+        <int-xml:xpath-expression expression="/order/item"/>
+    </int-xml:xpath-splitter>
+</beans>
